@@ -34,8 +34,8 @@ app.post("/create_posts", async (req, res) => {
 //buscar todos
 app.get("/list_posts", async (req, res) => {
   try {
-    const list_Posts = await Post.find();
-    res.send({ list_Posts });
+    const post = await Post.find();
+    res.send({ post });
   } catch (error) {
     res.state(400).send(error);
   }
