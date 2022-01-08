@@ -3,7 +3,7 @@ const app = express();
 
 require("dotenv").config();
 
-// const cors = require("cors");
+const cors = require("cors");
 
 const PORT = process.env.PORT; //porta
 
@@ -11,7 +11,7 @@ const Post = require("./models/Posts");
 
 app.use(express.json()); //middle
 
-// app.use(cors);
+app.use(cors());
 
 
 app.get("/", async (req, res) => {
@@ -35,6 +35,7 @@ app.post("/create_posts", async (req, res) => {
 app.get("/list_posts", async (req, res) => {
   try {
     const post = await Post.find();
+    
     res.send({ post });
   } catch (error) {
     res.state(400).send(error);
